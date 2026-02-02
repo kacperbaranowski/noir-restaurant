@@ -31,9 +31,6 @@ const galleryItems = [
     category: 'Przystawki'
   }
 ];
-
-// Duplicate for infinite scroll effect
-const allItems = [...galleryItems, ...galleryItems];
 ---
 
 <section id="galeria" class="py-24 lg:py-40 overflow-hidden">
@@ -44,10 +41,10 @@ const allItems = [...galleryItems, ...galleryItems];
   </div>
 
   <!-- Mobile: Horizontal scroll -->
-  <div class="lg:hidden overflow-x-auto scrollbar-hide px-6 -mx-6">
+  <div class="lg:hidden overflow-x-auto scrollbar-hide px-6">
     <div class="flex gap-4 pb-4" style="width: max-content;">
       {galleryItems.map((item) => (
-        <div class="gallery-item flex-shrink-0 w-[280px] h-[350px] relative overflow-hidden">
+        <div class="gallery-item flex-shrink-0 w-[280px] h-[350px] relative overflow-hidden rounded-sm">
           <img
             src={item.image}
             alt={item.title}
@@ -67,18 +64,19 @@ const allItems = [...galleryItems, ...galleryItems];
     </div>
   </div>
 
-  <!-- Desktop: Marquee animation -->
-  <div class="hidden lg:block">
-    <div class="gallery-marquee">
-      {allItems.map((item) => (
-        <div class="gallery-item flex-shrink-0 w-[500px] h-[600px] relative overflow-hidden cursor-pointer">
+  <!-- Desktop: GSAP Marquee -->
+  <div class="hidden lg:block overflow-hidden">
+    <div id="gallery-track" class="flex gap-8">
+      {[...galleryItems, ...galleryItems, ...galleryItems].map((item) => (
+        <div class="gallery-item flex-shrink-0 w-[450px] h-[550px] relative overflow-hidden cursor-pointer group">
           <img
             src={item.image}
             alt={item.title}
             loading="lazy"
-            class="w-full h-full object-cover transition-transform duration-700"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div class="gallery-item-overlay absolute bottom-0 left-0 w-full p-12 bg-gradient-to-t from-black/80 to-transparent">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"></div>
+          <div class="absolute bottom-0 left-0 w-full p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500">
             <h4 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-2">
               {item.title}
             </h4>
@@ -92,6 +90,37 @@ const allItems = [...galleryItems, ...galleryItems];
   </div>
 </section>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('gallery-track');
+    if (!track || window.innerWidth < 1024) return;
+
+    const items = track.querySelectorAll('.gallery-item');
+    const itemWidth = 450 + 32; // width + gap
+    const totalWidth = itemWidth * (items.length / 3); // Original items width
+
+    let xPos = 0;
+    let speed = 1;
+    let isPaused = false;
+
+    track.addEventListener('mouseenter', () => isPaused = true);
+    track.addEventListener('mouseleave', () => isPaused = false);
+
+    function animate() {
+      if (!isPaused) {
+        xPos -= speed;
+        if (Math.abs(xPos) >= totalWidth) {
+          xPos = 0;
+        }
+        track.style.transform = `translateX(${xPos}px)`;
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  });
+</script>
+
 <style>
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -99,5 +128,9 @@ const allItems = [...galleryItems, ...galleryItems];
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  #gallery-track {
+    will-change: transform;
   }
 </style>
