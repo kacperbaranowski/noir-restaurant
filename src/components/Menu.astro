@@ -1,0 +1,88 @@
+---
+const categories = ['Przystawki', 'Dania Główne', 'Desery', 'Degustacje'];
+
+const menuItems = [
+  {
+    name: 'Tatar z Polędwicy Wołowej',
+    description: 'Ręcznie siekana polędwica, żółtko przepiórcze, kapary, szczypiorek, grzanki brioche',
+    price: '89 PLN'
+  },
+  {
+    name: 'Carpaccio z Buraka',
+    description: 'Marynowane buraki, kozi ser, orzech włoski, rukola, redukcja balsamiczna',
+    price: '62 PLN'
+  },
+  {
+    name: 'Krewetki Tygrysie',
+    description: 'Grillowane krewetki, aioli z wędzonym czosnkiem, microgreens, oliwa truflowa',
+    price: '98 PLN'
+  },
+  {
+    name: 'Foie Gras',
+    description: 'Seared foie gras, brioche, karmelizowana gruszka, redukcja z Porto',
+    price: '124 PLN'
+  },
+  {
+    name: 'Risotto z Grzybami Leśnymi',
+    description: 'Cremoso risotto, sezonowe grzyby, parmezan 36-miesięczny, oliwa truflowa',
+    price: '78 PLN'
+  },
+  {
+    name: 'Ceviche z Łososia',
+    description: 'Świeży łosoś, awokado, mango, chili, kolendra, chips z tortilli',
+    price: '72 PLN'
+  }
+];
+---
+
+<section id="menu" class="py-40 px-8 lg:px-16 bg-[var(--color-bg-secondary)] relative overflow-hidden">
+  <!-- Background Text -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-[family-name:var(--font-display)] text-[25vw] font-light text-transparent pointer-events-none whitespace-nowrap select-none"
+    style="-webkit-text-stroke: 1px rgba(255,255,255,0.03);"
+  >
+    MENU
+  </div>
+
+  <!-- Header -->
+  <div class="text-center mb-32 relative z-10">
+    <h2 class="reveal font-[family-name:var(--font-display)] text-[clamp(3rem,8vw,6rem)] font-light mb-6">
+      Nasze Menu
+    </h2>
+    <p class="reveal font-[family-name:var(--font-body)] text-base font-extralight text-[var(--color-text-muted)] tracking-wide">
+      Sezonowe składniki, ponadczasowe smaki
+    </p>
+  </div>
+
+  <!-- Categories -->
+  <div class="reveal flex justify-center gap-12 mb-24 flex-wrap">
+    {categories.map((category, i) => (
+      <button
+        class={`menu-category magnetic relative font-[family-name:var(--font-body)] text-xs font-light tracking-[0.3em] uppercase py-4 bg-transparent border-none cursor-pointer transition-colors duration-300 ${
+          i === 0 ? 'active text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+        }`}
+      >
+        {category}
+      </button>
+    ))}
+  </div>
+
+  <!-- Menu Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-32 max-w-6xl mx-auto relative z-10">
+    {menuItems.map((item) => (
+      <div class="menu-item grid grid-cols-[1fr_auto] gap-8 py-8 border-b border-white/10">
+        <div>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-2 transition-colors duration-300">
+            {item.name}
+          </h3>
+          <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+        <span class="font-[family-name:var(--font-display)] text-xl font-normal text-[var(--color-accent)] whitespace-nowrap">
+          {item.price}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>

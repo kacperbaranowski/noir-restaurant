@@ -1,0 +1,19 @@
+---
+const words = ['Pasja', 'Smak', 'Elegancja', 'Tradycja'];
+---
+
+<div class="overflow-hidden py-16 bg-[var(--color-bg-secondary)]">
+  <div class="horizontal-text-inner">
+    {[...words, ...words, ...words, ...words].map((word, i) => (
+      <span
+        class={`font-[family-name:var(--font-display)] text-[clamp(4rem,10vw,8rem)] font-light italic px-8 ${
+          i % 2 === 1
+            ? 'text-[var(--color-text)]'
+            : 'text-transparent [-webkit-text-stroke:1px_var(--color-text-muted)]'
+        }`}
+      >
+        {word}
+      </span>
+    ))}
+  </div>
+</div>

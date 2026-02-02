@@ -1,0 +1,39 @@
+---
+
+---
+
+<section class="hero relative h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background -->
+  <div
+    class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+    style="background-image: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80'); filter: brightness(0.4) contrast(1.1); transform: scale(1.1);"
+  ></div>
+
+  <!-- Content -->
+  <div class="hero-content relative z-10 text-center px-8">
+    <p class="hero-subtitle font-[family-name:var(--font-body)] text-xs font-light tracking-[0.5em] uppercase text-[var(--color-accent)] mb-8 overflow-hidden">
+      Fine Dining Experience
+    </p>
+
+    <h1 class="hero-title font-[family-name:var(--font-display)] text-[clamp(4rem,15vw,12rem)] font-light leading-[0.9] tracking-tight mb-8">
+      <span class="line block overflow-hidden">
+        <span class="inline-block">Sztuka</span>
+      </span>
+      <span class="line block overflow-hidden">
+        <span class="inline-block italic text-[var(--color-accent)]">Smaku</span>
+      </span>
+    </h1>
+
+    <p class="hero-description font-[family-name:var(--font-body)] text-base font-extralight tracking-wide text-[var(--color-text-muted)] max-w-lg mx-auto">
+      Doświadcz kulinarnej podróży, gdzie każde danie opowiada historię, a każdy kęs to dzieło sztuki.
+    </p>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+    <span class="font-[family-name:var(--font-body)] text-[0.625rem] tracking-[0.3em] uppercase text-[var(--color-text-muted)]">
+      Przewiń
+    </span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>

@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Kontakt — NOIR Restaurant | Adres, Telefon, Godziny Otwarcia"
+  description="Skontaktuj się z NOIR Restaurant. Adres: ul. Elegancka 42, Warszawa. Telefon: +48 123 456 789. Godziny otwarcia, dojazd i formularz kontaktowy."
+  image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80"
+>
+  <Nav />
+
+  <!-- Hero Section -->
+  <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <div
+      class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80'); filter: brightness(0.25) contrast(1.1);"
+    ></div>
+
+    <div class="relative z-10 text-center px-8">
+      <p class="hero-subtitle font-[family-name:var(--font-body)] text-xs font-light tracking-[0.5em] uppercase text-[var(--color-accent)] mb-6">
+        Skontaktuj się z nami
+      </p>
+      <h1 class="hero-title font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,6rem)] font-light leading-tight">
+        <span class="line block overflow-hidden">
+          <span class="inline-block italic text-[var(--color-accent)]">Kontakt</span>
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Contact Info Section -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <!-- Location -->
+        <div class="reveal text-center lg:text-left">
+          <div class="w-16 h-16 mx-auto lg:mx-0 mb-6 border border-[var(--color-accent)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-4">
+            Lokalizacja
+          </h3>
+          <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+            ul. Elegancka 42<br />
+            00-001 Warszawa<br />
+            Polska
+          </p>
+          <a
+            href="https://maps.google.com"
+            target="_blank"
+            class="inline-block mt-6 font-[family-name:var(--font-body)] text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] hover:text-[var(--color-text)] transition-colors"
+          >
+            Zobacz na mapie →
+          </a>
+        </div>
+
+        <!-- Contact -->
+        <div class="reveal text-center lg:text-left">
+          <div class="w-16 h-16 mx-auto lg:mx-0 mb-6 border border-[var(--color-accent)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-4">
+            Telefon & Email
+          </h3>
+          <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+            <a href="tel:+48123456789" class="hover:text-[var(--color-text)] transition-colors">
+              +48 123 456 789
+            </a><br />
+            <a href="mailto:rezerwacje@noir.pl" class="hover:text-[var(--color-text)] transition-colors">
+              rezerwacje@noir.pl
+            </a><br />
+            <a href="mailto:kontakt@noir.pl" class="hover:text-[var(--color-text)] transition-colors">
+              kontakt@noir.pl
+            </a>
+          </p>
+        </div>
+
+        <!-- Hours -->
+        <div class="reveal text-center lg:text-left">
+          <div class="w-16 h-16 mx-auto lg:mx-0 mb-6 border border-[var(--color-accent)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-4">
+            Godziny otwarcia
+          </h3>
+          <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+            Wtorek - Czwartek: 18:00 - 23:00<br />
+            Piątek - Sobota: 18:00 - 00:00<br />
+            Niedziela: 17:00 - 22:00<br />
+            <span class="text-[var(--color-accent)]">Poniedziałek: Zamknięte</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="h-[50vh] bg-[var(--color-bg-secondary)] relative">
+    <div class="absolute inset-0 opacity-50">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.5693958776454!2d21.01222931580048!3d52.23183147976038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0xc2e97552f5a8d9f8!2sWarszawa%2C%20Polska!5e0!3m2!1spl!2spl!4v1620000000000!5m2!1spl!2spl"
+        width="100%"
+        height="100%"
+        style="border:0; filter: grayscale(100%) invert(90%);"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- Floating Card -->
+    <div class="absolute top-1/2 left-8 lg:left-16 -translate-y-1/2 bg-[var(--color-bg)] p-8 max-w-sm reveal">
+      <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-4">
+        Jak do nas <em class="italic text-[var(--color-accent)]">trafić</em>
+      </h3>
+      <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed mb-6">
+        Restauracja znajduje się w samym centrum Warszawy, w zabytkowej kamienicy.
+        Parking dostępny przy ul. Parkingowej.
+      </p>
+      <p class="font-[family-name:var(--font-body)] text-xs text-[var(--color-text-muted)]">
+        <strong class="text-[var(--color-text)]">Metro:</strong> Centrum (5 min pieszo)<br />
+        <strong class="text-[var(--color-text)]">Autobus:</strong> 175, 180, 503
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-[family-name:var(--font-display)] text-3xl lg:text-4xl font-light mb-4">
+          Napisz do nas
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-base font-extralight text-[var(--color-text-muted)]">
+          Masz pytanie? Chcesz zorganizować wydarzenie? Napisz, a odpowiemy najszybciej jak to możliwe.
+        </p>
+      </div>
+
+      <form class="space-y-6 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+              Imię i nazwisko
+            </label>
+            <input
+              type="text"
+              required
+              class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+            />
+          </div>
+          <div>
+            <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+              Email
+            </label>
+            <input
+              type="email"
+              required
+              class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+            Temat
+          </label>
+          <select
+            required
+            class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text-muted)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 appearance-none cursor-pointer"
+          >
+            <option value="">Wybierz temat</option>
+            <option value="rezerwacja">Pytanie o rezerwację</option>
+            <option value="wydarzenie">Organizacja wydarzenia</option>
+            <option value="wspolpraca">Współpraca</option>
+            <option value="kariera">Kariera</option>
+            <option value="inne">Inne</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+            Wiadomość
+          </label>
+          <textarea
+            rows="6"
+            required
+            placeholder="Twoja wiadomość..."
+            class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 resize-none placeholder:text-[var(--color-text-muted)]/50"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-btn magnetic relative w-full p-5 bg-[var(--color-accent)] border-none text-[var(--color-bg)] font-[family-name:var(--font-body)] text-sm font-normal tracking-[0.3em] uppercase cursor-pointer overflow-hidden transition-all duration-400"
+        >
+          <span class="relative z-10">Wyślij wiadomość</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Social Section -->
+  <section class="py-24 px-8 lg:px-16 bg-[var(--color-bg-secondary)] text-center">
+    <div class="max-w-2xl mx-auto reveal">
+      <h2 class="font-[family-name:var(--font-display)] text-2xl font-light mb-8">
+        Śledź nas
+      </h2>
+      <div class="flex justify-center gap-8">
+        <a
+          href="#"
+          class="magnetic font-[family-name:var(--font-body)] text-sm tracking-[0.2em] uppercase text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+        >
+          Instagram
+        </a>
+        <a
+          href="#"
+          class="magnetic font-[family-name:var(--font-body)] text-sm tracking-[0.2em] uppercase text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+        >
+          Facebook
+        </a>
+        <a
+          href="#"
+          class="magnetic font-[family-name:var(--font-body)] text-sm tracking-[0.2em] uppercase text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+        >
+          TripAdvisor
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

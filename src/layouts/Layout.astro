@@ -1,0 +1,459 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title,
+  description = 'NOIR - Ekskluzywna restauracja fine dining w sercu Warszawy. Odkryj sztukę smaku w eleganckim wnętrzu. 2 gwiazdki Michelin.',
+  image = 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+  type = 'website'
+} = Astro.props;
+
+const siteUrl = 'https://noir-restaurant.pl';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "NOIR Restaurant",
+  "image": image,
+  "url": siteUrl,
+  "telephone": "+48123456789",
+  "email": "rezerwacje@noir.pl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Elegancka 42",
+    "addressLocality": "Warszawa",
+    "postalCode": "00-001",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.2319,
+    "longitude": 21.0067
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
+      "opens": "18:00",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday", "Saturday"],
+      "opens": "18:00",
+      "closes": "00:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "17:00",
+      "closes": "22:00"
+    }
+  ],
+  "servesCuisine": ["Fine Dining", "Polska", "Europejska"],
+  "priceRange": "$$$$",
+  "acceptsReservations": "True",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "328"
+  },
+  "award": "2 Gwiazdki Michelin"
+};
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="restauracja, fine dining, Warszawa, kuchnia polska, Michelin, degustacja, rezerwacja, NOIR" />
+    <meta name="author" content="NOIR Restaurant" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="NOIR Restaurant" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <!-- Noise Texture -->
+    <div class="noise"></div>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- GSAP Scripts -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script is:inline>
+      // Register GSAP Plugins
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Wait for DOM
+      document.addEventListener('DOMContentLoaded', () => {
+        initNavAnimation();
+        initHeroAnimations();
+        initMagneticEffect();
+        initSmoothScroll();
+        initScrollAnimations();
+        initParallax();
+        initCounterAnimation();
+      });
+
+      // Nav Animation (always runs)
+      function initNavAnimation() {
+        gsap.from('.nav', {
+          y: -80,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        });
+      }
+
+      // Hero Intro Animations (only if hero exists)
+      function initHeroAnimations() {
+        const heroBg = document.querySelector('.hero-bg');
+        if (!heroBg) return;
+
+        const heroTl = gsap.timeline();
+
+        heroTl
+          .from('.hero-bg', {
+            scale: 1.2,
+            duration: 1.5,
+            ease: 'power2.out'
+          })
+          .from('.hero-subtitle', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+          }, '-=1')
+          .from('.hero-title .line span', {
+            y: '100%',
+            duration: 1,
+            stagger: 0.12,
+            ease: 'power4.out'
+          }, '-=0.6')
+          .from('.hero-description', {
+            y: 25,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+          }, '-=0.5')
+          .from('.hero-scroll', {
+            opacity: 0,
+            y: 15,
+            duration: 0.6,
+            ease: 'power3.out'
+          }, '-=0.3');
+      }
+
+      // Magnetic Effect
+      function initMagneticEffect() {
+        if (window.innerWidth < 768) return;
+
+        document.querySelectorAll('.magnetic').forEach((el) => {
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(el, {
+              x: x * 0.3,
+              y: y * 0.3,
+              duration: 0.4,
+              ease: 'power2.out'
+            });
+          });
+
+          el.addEventListener('mouseleave', () => {
+            gsap.to(el, {
+              x: 0,
+              y: 0,
+              duration: 0.7,
+              ease: 'elastic.out(1, 0.3)'
+            });
+          });
+        });
+      }
+
+      // Smooth Scroll for Anchor Links
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              gsap.to(window, {
+                scrollTo: {
+                  y: target,
+                  offsetY: 100
+                },
+                duration: 1.5,
+                ease: 'power3.inOut'
+              });
+            }
+          });
+        });
+      }
+
+      // Scroll Animations
+      function initScrollAnimations() {
+        // Reveal animations
+        gsap.utils.toArray('.reveal').forEach((elem) => {
+          gsap.to(elem, {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: elem,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.reveal-left').forEach((elem) => {
+          gsap.to(elem, {
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: elem,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.reveal-right').forEach((elem) => {
+          gsap.to(elem, {
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: elem,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.reveal-scale').forEach((elem) => {
+          gsap.to(elem, {
+            scale: 1,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: elem,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        // Menu items stagger
+        gsap.utils.toArray('.menu-item').forEach((item, i) => {
+          gsap.from(item, {
+            x: i % 2 === 0 ? -50 : 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        // Gallery items 3D effect
+        document.querySelectorAll('.gallery-item').forEach((item) => {
+          item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            gsap.to(item, {
+              rotateY: x * 10,
+              rotateX: -y * 10,
+              transformPerspective: 1000,
+              duration: 0.5,
+              ease: 'power2.out'
+            });
+          });
+
+          item.addEventListener('mouseleave', () => {
+            gsap.to(item, {
+              rotateY: 0,
+              rotateX: 0,
+              duration: 0.7,
+              ease: 'elastic.out(1, 0.5)'
+            });
+          });
+        });
+      }
+
+      // Parallax Effects
+      function initParallax() {
+        gsap.to('.hero-bg', {
+          yPercent: 30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.to('.philosophy-image img', {
+          yPercent: -15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.philosophy-image',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.to('.reservation-bg', {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.reservation',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        // Section numbers
+        gsap.utils.toArray('.section-number').forEach((num) => {
+          gsap.from(num, {
+            x: -100,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: num,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+      }
+
+      // Counter Animation
+      function initCounterAnimation() {
+        gsap.utils.toArray('.stat-number').forEach((stat) => {
+          const count = stat.dataset.count;
+          gsap.fromTo(stat,
+            { innerText: 0 },
+            {
+              innerText: count,
+              duration: 2,
+              snap: { innerText: 1 },
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: stat,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        });
+      }
+
+      // Menu Category Filter
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('menu-category')) {
+          document.querySelectorAll('.menu-category').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+
+          gsap.to('.menu-item', {
+            opacity: 0,
+            y: 20,
+            duration: 0.3,
+            stagger: 0.05,
+            onComplete: () => {
+              gsap.to('.menu-item', {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: 'power3.out'
+              });
+            }
+          });
+        }
+      });
+
+      // Form Submission
+      document.addEventListener('submit', (e) => {
+        if (e.target.classList.contains('reservation-form')) {
+          e.preventDefault();
+
+          gsap.to('.submit-btn', {
+            scale: 0.95,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1,
+            onComplete: () => {
+              alert('Dziękujemy za rezerwację! Skontaktujemy się z Tobą wkrótce.');
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

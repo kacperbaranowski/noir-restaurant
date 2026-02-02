@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const team = [
+  {
+    name: 'Aleksander Kowalski',
+    role: 'Szef Kuchni',
+    image: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80',
+    description: 'Absolwent Le Cordon Bleu w Paryżu, z 20-letnim doświadczeniem w najlepszych restauracjach Europy.'
+  },
+  {
+    name: 'Marta Wiśniewska',
+    role: 'Sous Chef',
+    image: 'https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&q=80',
+    description: 'Specjalistka od deserów, łączy tradycyjne techniki z nowoczesnymi trendami kulinarnymi.'
+  },
+  {
+    name: 'Tomasz Nowak',
+    role: 'Sommelier',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80',
+    description: 'Certyfikowany sommelier z kolekcją ponad 300 etykiet win z całego świata.'
+  }
+];
+
+const milestones = [
+  { year: '2010', title: 'Otwarcie', description: 'NOIR otwiera swoje drzwi w sercu Warszawy' },
+  { year: '2014', title: 'Pierwsza Gwiazdka', description: 'Zdobywamy pierwszą gwiazdkę Michelin' },
+  { year: '2018', title: 'Druga Gwiazdka', description: 'Prestiżowe wyróżnienie drugą gwiazdką Michelin' },
+  { year: '2022', title: 'Rozbudowa', description: 'Otwarcie prywatnej sali degustacyjnej Chef\'s Table' },
+];
+---
+
+<Layout
+  title="O Nas — Historia NOIR Restaurant | Zespół i Filozofia"
+  description="Poznaj historię restauracji NOIR od 2010 roku. Nasz zespół, 2 gwiazdki Michelin, filozofia kuchni i pasja do fine dining. Szef kuchni Aleksander Kowalski."
+  image="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80"
+>
+  <Nav />
+
+  <!-- Hero Section -->
+  <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <div
+      class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%), url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1920&q=80'); filter: brightness(0.3) contrast(1.1);"
+    ></div>
+
+    <div class="relative z-10 text-center px-8">
+      <p class="hero-subtitle font-[family-name:var(--font-body)] text-xs font-light tracking-[0.5em] uppercase text-[var(--color-accent)] mb-6">
+        Nasza Historia
+      </p>
+      <h1 class="hero-title font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,7rem)] font-light leading-tight">
+        <span class="line block overflow-hidden">
+          <span class="inline-block">Pasja</span>
+        </span>
+        <span class="line block overflow-hidden">
+          <span class="inline-block italic text-[var(--color-accent)]">od 2010</span>
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 max-w-7xl mx-auto items-center">
+      <div class="reveal">
+        <p class="section-label mb-8">Nasza Filozofia</p>
+        <h2 class="font-[family-name:var(--font-display)] text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight mb-8">
+          Gdzie tradycja spotyka się z <em class="italic text-[var(--color-accent-light)]">innowacją</em>
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-base font-extralight leading-8 text-[var(--color-text-muted)] mb-6">
+          NOIR to miejsce, gdzie kulinarna pasja łączy się z artystyczną wizją. Od 2010 roku tworzymy
+          doświadczenia, które angażują wszystkie zmysły — od pierwszego spojrzenia na danie,
+          przez aromat unoszący się nad talerzem, aż po ostatni kęs.
+        </p>
+        <p class="font-[family-name:var(--font-body)] text-base font-extralight leading-8 text-[var(--color-text-muted)]">
+          Nasza kuchnia czerpie inspirację z polskich tradycji kulinarnych, wzbogacając je o techniki
+          i smaki z całego świata. Każdy składnik jest starannie wyselekcjonowany od lokalnych dostawców,
+          którzy dzielą naszą pasję do jakości.
+        </p>
+      </div>
+
+      <div class="image-frame relative h-[600px] overflow-hidden reveal-right">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+          alt="Wnętrze restauracji NOIR"
+          loading="lazy"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-32 px-8 lg:px-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-20 reveal">
+        <h2 class="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,4rem)] font-light mb-4">
+          Nasza Droga
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-base font-extralight text-[var(--color-text-muted)]">
+          Kluczowe momenty w historii NOIR
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Timeline Line -->
+        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 hidden lg:block"></div>
+
+        {milestones.map((milestone, i) => (
+          <div class={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mb-16 last:mb-0 reveal ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div class={`flex-1 ${i % 2 === 1 ? 'lg:text-left' : 'lg:text-right'}`}>
+              <span class="font-[family-name:var(--font-display)] text-5xl font-light text-[var(--color-accent)]">
+                {milestone.year}
+              </span>
+              <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mt-2 mb-2">
+                {milestone.title}
+              </h3>
+              <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)]">
+                {milestone.description}
+              </p>
+            </div>
+
+            <div class="w-4 h-4 rounded-full bg-[var(--color-accent)] relative z-10 hidden lg:block"></div>
+
+            <div class="flex-1"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20 reveal">
+        <p class="section-label justify-center mb-6">Nasz Zespół</p>
+        <h2 class="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,4rem)] font-light">
+          Ludzie <em class="italic text-[var(--color-accent-light)]">NOIR</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {team.map((member) => (
+          <div class="reveal group">
+            <div class="relative h-[400px] overflow-hidden mb-6">
+              <img
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <span class="font-[family-name:var(--font-body)] text-xs font-light tracking-[0.3em] uppercase text-[var(--color-accent)]">
+              {member.role}
+            </span>
+            <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mt-2 mb-3">
+              {member.name}
+            </h3>
+            <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+              {member.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-32 px-8 lg:px-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="reveal">
+        <h2 class="font-[family-name:var(--font-display)] text-[clamp(2rem,5vw,3.5rem)] font-light leading-relaxed mb-12">
+          „Gotowanie to miłość, którą można <em class="italic text-[var(--color-accent-light)]">posmakować</em>"
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-lg font-extralight text-[var(--color-text-muted)]">
+          — Aleksander Kowalski, Szef Kuchni
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

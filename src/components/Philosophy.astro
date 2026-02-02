@@ -1,0 +1,56 @@
+---
+const stats = [
+  { number: 15, label: 'Lat doświadczenia' },
+  { number: 2, label: 'Gwiazdki Michelin' },
+  { number: 50, label: 'Pozycji w menu' },
+];
+---
+
+<section id="filozofia" class="py-60 px-8 lg:px-16 relative">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 max-w-7xl mx-auto items-center">
+    <!-- Content -->
+    <div class="relative">
+      <span class="section-number">01</span>
+
+      <p class="section-label mb-8 reveal">Nasza Filozofia</p>
+
+      <h2 class="reveal font-[family-name:var(--font-display)] text-[clamp(2.5rem,5vw,4rem)] font-light leading-tight mb-8">
+        Gotujemy z <em class="italic text-[var(--color-accent-light)]">pasją</em>,
+        serwujemy z <em class="italic text-[var(--color-accent-light)]">sercem</em>
+      </h2>
+
+      <p class="reveal font-[family-name:var(--font-body)] text-base font-extralight leading-8 text-[var(--color-text-muted)] mb-12">
+        W NOIR wierzymy, że jedzenie to więcej niż posiłek — to doświadczenie, które angażuje wszystkie zmysły.
+        Nasi szefowie kuchni łączą tradycyjne polskie smaki z nowoczesną techniką, tworząc dania,
+        które zachwycają zarówno podniebienie, jak i oko.
+      </p>
+
+      <div class="reveal flex gap-16 mt-16">
+        {stats.map((stat) => (
+          <div class="text-left">
+            <span
+              class="stat-number font-[family-name:var(--font-display)] text-6xl font-light text-[var(--color-accent)] leading-none"
+              data-count={stat.number}
+            >
+              0
+            </span>
+            <span class="block font-[family-name:var(--font-body)] text-xs font-light tracking-[0.2em] uppercase text-[var(--color-text-muted)] mt-2">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div class="philosophy-image image-frame relative h-[700px] overflow-hidden reveal-right">
+      <img
+        src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&q=80"
+        alt="Kuchnia NOIR"
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        style="filter: brightness(0.9) contrast(1.05);"
+      />
+    </div>
+  </div>
+</section>

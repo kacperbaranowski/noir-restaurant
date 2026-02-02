@@ -1,0 +1,277 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const experiences = [
+  {
+    title: 'Kolacja à la carte',
+    description: 'Klasyczne doświadczenie NOIR — wybierz dania z naszego menu sezonowego',
+    duration: '2-3 godziny',
+    price: 'od 200 PLN/os.'
+  },
+  {
+    title: 'Menu Degustacyjne',
+    description: '7-daniowa podróż kulinarna z paringiem win dobrana przez sommeliera',
+    duration: '3-4 godziny',
+    price: '450 PLN/os.'
+  },
+  {
+    title: 'Chef\'s Table',
+    description: 'Ekskluzywne doświadczenie przy stole szefa kuchni z personalizowanym menu',
+    duration: '4 godziny',
+    price: '750 PLN/os.'
+  }
+];
+---
+
+<Layout
+  title="Rezerwacja Online — NOIR Restaurant Warszawa"
+  description="Zarezerwuj stolik w NOIR Restaurant online. Kolacja à la carte, menu degustacyjne lub ekskluzywny Chef's Table. Godziny otwarcia i dostępne terminy."
+  image="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80"
+>
+  <Nav />
+
+  <!-- Hero Section -->
+  <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <div
+      class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80'); filter: brightness(0.25) contrast(1.1);"
+    ></div>
+
+    <div class="relative z-10 text-center px-8">
+      <p class="hero-subtitle font-[family-name:var(--font-body)] text-xs font-light tracking-[0.5em] uppercase text-[var(--color-accent)] mb-6">
+        Zarezerwuj Stolik
+      </p>
+      <h1 class="hero-title font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,6rem)] font-light leading-tight">
+        <span class="line block overflow-hidden">
+          <span class="inline-block italic text-[var(--color-accent)]">Rezerwacja</span>
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Experiences Section -->
+  <section class="py-24 px-8 lg:px-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-[family-name:var(--font-display)] text-3xl lg:text-4xl font-light mb-4">
+          Wybierz Doświadczenie
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-base font-extralight text-[var(--color-text-muted)]">
+          Każda wizyta w NOIR może być wyjątkowa na swój sposób
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {experiences.map((exp) => (
+          <div class="reveal p-8 border border-white/10 transition-all duration-500 hover:border-[var(--color-accent)] hover:bg-white/[0.02] group">
+            <h3 class="font-[family-name:var(--font-display)] text-2xl font-normal mb-4 group-hover:text-[var(--color-accent)] transition-colors">
+              {exp.title}
+            </h3>
+            <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed mb-6">
+              {exp.description}
+            </p>
+            <div class="flex justify-between items-center pt-6 border-t border-white/10">
+              <span class="font-[family-name:var(--font-body)] text-xs tracking-wide text-[var(--color-text-muted)]">
+                {exp.duration}
+              </span>
+              <span class="font-[family-name:var(--font-display)] text-lg text-[var(--color-accent)]">
+                {exp.price}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Form Section -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Info -->
+        <div class="reveal">
+          <p class="section-label mb-6">Informacje</p>
+          <h2 class="font-[family-name:var(--font-display)] text-3xl lg:text-4xl font-light mb-8">
+            Zanim <em class="italic text-[var(--color-accent-light)]">zarezerwujesz</em>
+          </h2>
+
+          <div class="space-y-6 font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+            <p>
+              <strong class="text-[var(--color-text)] font-normal">Godziny otwarcia:</strong><br />
+              Wtorek - Czwartek: 18:00 - 23:00<br />
+              Piątek - Sobota: 18:00 - 00:00<br />
+              Niedziela: 17:00 - 22:00<br />
+              Poniedziałek: Zamknięte
+            </p>
+
+            <p>
+              <strong class="text-[var(--color-text)] font-normal">Dress code:</strong><br />
+              Smart casual. Prosimy o elegancki, ale wygodny strój.
+            </p>
+
+            <p>
+              <strong class="text-[var(--color-text)] font-normal">Polityka rezerwacji:</strong><br />
+              Rezerwacje przyjmujemy z maksymalnie 30-dniowym wyprzedzeniem.
+              Prosimy o anulowanie z minimum 24-godzinnym wyprzedzeniem.
+            </p>
+
+            <p>
+              <strong class="text-[var(--color-text)] font-normal">Grupy:</strong><br />
+              Dla grup powyżej 8 osób prosimy o kontakt telefoniczny.
+            </p>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-white/10">
+            <p class="font-[family-name:var(--font-body)] text-sm text-[var(--color-text-muted)] mb-2">
+              Preferujesz kontakt bezpośredni?
+            </p>
+            <a
+              href="tel:+48123456789"
+              class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-accent)] hover:text-[var(--color-text)] transition-colors"
+            >
+              +48 123 456 789
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="reveal">
+          <form class="reservation-form space-y-6">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Imię
+                </label>
+                <input
+                  type="text"
+                  required
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Nazwisko
+                </label>
+                <input
+                  type="text"
+                  required
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+              />
+            </div>
+
+            <div>
+              <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                Telefon
+              </label>
+              <input
+                type="tel"
+                required
+                class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Data
+                </label>
+                <input
+                  type="date"
+                  required
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300"
+                />
+              </div>
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Godzina
+                </label>
+                <select
+                  required
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text-muted)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 appearance-none cursor-pointer"
+                >
+                  <option value="">Wybierz</option>
+                  <option value="18:00">18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:00">20:00</option>
+                  <option value="20:30">20:30</option>
+                  <option value="21:00">21:00</option>
+                  <option value="21:30">21:30</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Liczba osób
+                </label>
+                <select
+                  required
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text-muted)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 appearance-none cursor-pointer"
+                >
+                  <option value="">Wybierz</option>
+                  <option value="1">1 osoba</option>
+                  <option value="2">2 osoby</option>
+                  <option value="3">3 osoby</option>
+                  <option value="4">4 osoby</option>
+                  <option value="5">5 osób</option>
+                  <option value="6">6 osób</option>
+                  <option value="7">7 osób</option>
+                  <option value="8">8 osób</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                  Doświadczenie
+                </label>
+                <select
+                  class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text-muted)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 appearance-none cursor-pointer"
+                >
+                  <option value="a-la-carte">À la carte</option>
+                  <option value="degustacja">Menu degustacyjne</option>
+                  <option value="chefs-table">Chef's Table</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-[family-name:var(--font-body)] text-xs tracking-wider uppercase text-[var(--color-text-muted)] mb-3">
+                Specjalne życzenia
+              </label>
+              <textarea
+                rows="4"
+                placeholder="Alergie, preferencje dietetyczne, okazja specjalna..."
+                class="w-full p-4 bg-white/5 border border-white/10 text-[var(--color-text)] font-[family-name:var(--font-body)] text-sm font-light transition-all duration-300 resize-none placeholder:text-[var(--color-text-muted)]/50"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="submit-btn magnetic relative w-full p-5 bg-[var(--color-accent)] border-none text-[var(--color-bg)] font-[family-name:var(--font-body)] text-sm font-normal tracking-[0.3em] uppercase cursor-pointer overflow-hidden transition-all duration-400"
+            >
+              <span class="relative z-10">Zarezerwuj</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

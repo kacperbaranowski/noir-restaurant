@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const menuSections = [
+  {
+    title: 'Przystawki',
+    items: [
+      { name: 'Tatar z Polędwicy Wołowej', description: 'Ręcznie siekana polędwica, żółtko przepiórcze, kapary, szczypiorek, grzanki brioche', price: '89 PLN' },
+      { name: 'Carpaccio z Buraka', description: 'Marynowane buraki, kozi ser, orzech włoski, rukola, redukcja balsamiczna', price: '62 PLN' },
+      { name: 'Krewetki Tygrysie', description: 'Grillowane krewetki, aioli z wędzonym czosnkiem, microgreens, oliwa truflowa', price: '98 PLN' },
+      { name: 'Foie Gras', description: 'Seared foie gras, brioche, karmelizowana gruszka, redukcja z Porto', price: '124 PLN' },
+      { name: 'Ceviche z Łososia', description: 'Świeży łosoś, awokado, mango, chili, kolendra, chips z tortilli', price: '72 PLN' },
+      { name: 'Burrata z Pomidorami', description: 'Kremowa burrata, pomidory heirloom, bazylia, oliwa extra vergine', price: '68 PLN' },
+    ]
+  },
+  {
+    title: 'Zupy',
+    items: [
+      { name: 'Krem z Dyni', description: 'Aksamitny krem, pestki dyni, oliwa truflowa, grissini', price: '42 PLN' },
+      { name: 'Consommé Wołowe', description: 'Klarowny bulion, ravioli z wołowiną, warzywa julienne', price: '48 PLN' },
+      { name: 'Bisque z Homara', description: 'Kremowa zupa z homara, koniak, śmietana, pieczywo czosnkowe', price: '78 PLN' },
+    ]
+  },
+  {
+    title: 'Dania Główne',
+    items: [
+      { name: 'Polędwica Wołowa', description: 'Polędwica Black Angus 200g, sos demi-glace, purée ziemniaczane, warzywa sezonowe', price: '189 PLN' },
+      { name: 'Kaczka Konfitowana', description: 'Udko kaczki, czerwona kapusta, jabłko, sos pomarańczowy', price: '128 PLN' },
+      { name: 'Łosoś Norweski', description: 'Filet z łososia, risotto szparagowe, sos cytrynowo-kaparowy', price: '118 PLN' },
+      { name: 'Risotto z Grzybami Leśnymi', description: 'Cremoso risotto, sezonowe grzyby, parmezan 36-miesięczny, oliwa truflowa', price: '98 PLN' },
+      { name: 'Comber Jagnięcy', description: 'Comber jagnięcy, ratatouille, ziemniaki fondant, jus z rozmarynem', price: '168 PLN' },
+      { name: 'Dorada z Grilla', description: 'Cała dorada, warzywa z grilla, salsa verde, cytryna', price: '138 PLN' },
+    ]
+  },
+  {
+    title: 'Desery',
+    items: [
+      { name: 'Fondant Czekoladowy', description: 'Ciepły fondant z płynnym środkiem, lody waniliowe, maliny', price: '52 PLN' },
+      { name: 'Crème Brûlée', description: 'Klasyczny krem waniliowy, karmelowa skorupka, owoce sezonowe', price: '42 PLN' },
+      { name: 'Tarta Cytrynowa', description: 'Tarta z kremem cytrynowym, beza włoska, sorbet malinowy', price: '48 PLN' },
+      { name: 'Tiramisu', description: 'Klasyczne tiramisu, mascarpone, espresso, kakao', price: '46 PLN' },
+      { name: 'Deska Serów', description: 'Selekcja serów europejskich, orzechy, miód, crackersy', price: '78 PLN' },
+    ]
+  }
+];
+---
+
+<Layout
+  title="Menu — NOIR Restaurant Warszawa | Karta Dań i Ceny"
+  description="Odkryj nasze sezonowe menu: przystawki, dania główne, desery i menu degustacyjne. Świeże składniki od lokalnych dostawców. Zobacz ceny i składniki."
+  image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80"
+>
+  <Nav />
+
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+    <div
+      class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80'); filter: brightness(0.35) contrast(1.1);"
+    ></div>
+
+    <div class="relative z-10 text-center px-8">
+      <p class="hero-subtitle font-[family-name:var(--font-body)] text-xs font-light tracking-[0.5em] uppercase text-[var(--color-accent)] mb-6">
+        Nasze Menu
+      </p>
+      <h1 class="hero-title font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,7rem)] font-light leading-tight">
+        <span class="line block overflow-hidden">
+          <span class="inline-block">Kulinarna</span>
+        </span>
+        <span class="line block overflow-hidden">
+          <span class="inline-block italic text-[var(--color-accent)]">Podróż</span>
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Menu Sections -->
+  <section class="py-32 px-8 lg:px-16">
+    <div class="max-w-5xl mx-auto">
+      {menuSections.map((section, sectionIndex) => (
+        <div class="mb-24 last:mb-0">
+          <div class="flex items-center gap-6 mb-12 reveal">
+            <span class="font-[family-name:var(--font-display)] text-6xl font-light text-[var(--color-accent)] opacity-30">
+              {String(sectionIndex + 1).padStart(2, '0')}
+            </span>
+            <h2 class="font-[family-name:var(--font-display)] text-4xl lg:text-5xl font-light">
+              {section.title}
+            </h2>
+            <div class="flex-1 h-px bg-white/10"></div>
+          </div>
+
+          <div class="space-y-6">
+            {section.items.map((item) => (
+              <div class="menu-item grid grid-cols-[1fr_auto] gap-8 py-6 border-b border-white/10 reveal">
+                <div>
+                  <h3 class="font-[family-name:var(--font-display)] text-xl lg:text-2xl font-normal mb-2 transition-colors duration-300">
+                    {item.name}
+                  </h3>
+                  <p class="font-[family-name:var(--font-body)] text-sm font-extralight text-[var(--color-text-muted)] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+                <span class="font-[family-name:var(--font-display)] text-xl font-normal text-[var(--color-accent)] whitespace-nowrap">
+                  {item.price}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 px-8 lg:px-16 bg-[var(--color-bg-secondary)] text-center">
+    <div class="max-w-2xl mx-auto reveal">
+      <p class="font-[family-name:var(--font-body)] text-base font-extralight text-[var(--color-text-muted)] mb-8">
+        Menu sezonowe — składniki mogą ulec zmianie w zależności od dostępności.
+        Informujemy o alergenach na życzenie.
+      </p>
+      <a
+        href="/rezerwacja"
+        class="magnetic inline-block font-[family-name:var(--font-body)] text-sm font-normal tracking-[0.2em] uppercase text-[var(--color-bg)] bg-[var(--color-accent)] px-12 py-5 no-underline transition-all duration-400 hover:bg-[var(--color-text)]"
+      >
+        Zarezerwuj Stolik
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
