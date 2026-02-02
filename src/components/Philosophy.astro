@@ -25,16 +25,16 @@ const stats = [
         które zachwycają zarówno podniebienie, jak i oko.
       </p>
 
-      <div class="reveal flex gap-16 mt-16">
+      <div class="reveal grid grid-cols-3 gap-4 lg:gap-12 mt-12 lg:mt-16">
         {stats.map((stat) => (
           <div class="text-left">
             <span
-              class="stat-number font-[family-name:var(--font-display)] text-6xl font-light text-[var(--color-accent)] leading-none"
+              class="stat-number font-[family-name:var(--font-display)] text-3xl lg:text-6xl font-light text-[var(--color-accent)] leading-none"
               data-count={stat.number}
             >
               0
             </span>
-            <span class="block font-[family-name:var(--font-body)] text-xs font-light tracking-[0.2em] uppercase text-[var(--color-text-muted)] mt-2">
+            <span class="block font-[family-name:var(--font-body)] text-[10px] lg:text-xs font-light tracking-[0.1em] lg:tracking-[0.2em] uppercase text-[var(--color-text-muted)] mt-1 lg:mt-2">
               {stat.label}
             </span>
           </div>
